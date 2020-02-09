@@ -2,7 +2,7 @@ package earthquakemonitoring;
 
 /**
  *
- * @author Richard
+ * @author Richard and Aileen 
  * @version v.1
  */
 public class Observatory {
@@ -106,6 +106,51 @@ public class Observatory {
                 +"Year Galamsey started: "+ getYear()+"\n"
                 +"Area covered by observatory: "+ getAreaCovered();
         return details;
+    }
+      /**
+     * This method returns the largest "galamsey" colour value.
+     * @return large
+     */
+    public int largest(){
+       int large= Math.max(Math.max(count_a,count_b),count_c);
+       if(large==count_a){
+           System.out.println("Green");
+       }
+       else if (large==count_b){
+           System.out.println("Yellow");
+       }
+       else{
+           System.out.println("Brown");
+       }
+       return large;
+    }
+
+
+    /**
+     * This method returns the average "galamsey" colour value.
+     * @return
+     */
+    public double average(){
+        int total=count_a+2*(count_b)+ 3*(count_c);
+        double average= total/total_count;
+        return average;
+    }
+
+    /**
+     * This method returns the list of all "galamsey" events with a colour value greater than
+     * a given number n.
+     * @param Galamsey_Operations
+     * @param n
+     */
+    public void Galamsey_List(Hashtable Galamsey_Operations,int n){
+        Iterator<Integer> A1 = Galamsey_Operations.keySet().iterator();
+        while (A1.hasNext()) {
+            int key = A1.next();
+            Galamseys gy = (Galamseys) Galamsey_Operations.get(key);
+            if(gy.getColor_value()>n){
+                System.out.println(gy.GalamseyDetails()+ displayDetails());
+            }
+        }
     }
     
 }
