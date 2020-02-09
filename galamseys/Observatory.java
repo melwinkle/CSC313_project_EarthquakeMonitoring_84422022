@@ -1,4 +1,7 @@
-package earthquakemonitoring;
+package galamseys;
+
+import java.util.Hashtable;
+import java.util.Iterator;
 
 /**
  *
@@ -10,7 +13,11 @@ public class Observatory {
     private String CountryName;
     private int year;
     private double areaCovered;
-    
+    int count_a=0;
+    int count_b=0;
+    int count_c=0;
+    int total_count= count_a+count_b+count_c;
+
     /**
      * creating default constructor
      */
@@ -65,7 +72,7 @@ public class Observatory {
     }
 
     /**
-     *getter method for Year Galamsey started
+     *getter method for Year galamseys.Galamsey started
      * @return year
      */
     public int getYear() {
@@ -73,7 +80,7 @@ public class Observatory {
     }
 
     /**
-     *setter method for Year Galamsey started
+     *setter method for Year galamseys.Galamsey started
      * @param year
      */
     public void setYear(int year) {
@@ -103,9 +110,23 @@ public class Observatory {
     public String displayDetails(){
         String details= "Observatory Name: "+ getObsName()+"\n"
                 +"Country Name: "+ getCountryName()+"\n"
-                +"Year Galamsey started: "+ getYear()+"\n"
+                +"Year galamseys.Galamsey started: "+ getYear()+"\n"
                 +"Area covered by observatory: "+ getAreaCovered();
         return details;
+    }
+
+    public int count(){
+        if(Galamsey.getColor_value()==1){
+            count_a++;
+        }
+        else if(Galamsey.getColor_value()==2){
+            count_b++;
+
+        }
+        else if(Galamsey.getColor_value()==3){
+            count_c++;
+        }
+        return total_count;
     }
       /**
      * This method returns the largest "galamsey" colour value.
@@ -142,11 +163,11 @@ public class Observatory {
      * @param Galamsey_Operations
      * @param n
      */
-    public void Galamsey_List(Hashtable Galamsey_Operations,int n){
+    public void Galamsey_List(Hashtable Galamsey_Operations, int n){
         Iterator<Integer> A1 = Galamsey_Operations.keySet().iterator();
         while (A1.hasNext()) {
             int key = A1.next();
-            Galamseys gy = (Galamseys) Galamsey_Operations.get(key);
+            Galamsey gy = (Galamsey) Galamsey_Operations.get(key);
             if(gy.getColor_value()>n){
                 System.out.println(gy.GalamseyDetails()+ displayDetails());
             }
